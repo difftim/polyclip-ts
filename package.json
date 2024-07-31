@@ -1,16 +1,14 @@
 {
-  "name": "polyclip-ts",
+  "name": "@baye/polyclip-ts",
   "description": "Apply boolean polygon clipping operations (intersection, union, difference, xor) to your Polygons & MultiPolygons.",
-  "version": "0.16.5",
+  "version": "0.16.5-apha.0",
   "author": {
     "name": "Luiz Felipe Machado Barboza"
   },
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.min.cjs",
   "module": "dist/index.js",
-  "jsdelivr": "dist/polyclip-ts.umd.min.js",
-  "unpkg": "dist/polyclip-ts.umd.min.js",
   "types": "types/index.d.ts",
   "exports": {
     ".": {
@@ -19,13 +17,14 @@
         "types": "./types/index.d.ts"
       },
       "require": {
-        "default": "./dist/index.js",
+        "default": "./dist/index.min.cjs",
         "types": "./types/index.d.ts"
       }
-    } 
+    }
   },
   "files": [
     "dist/**/*.js",
+    "dist/**/*.cjs",
     "types/**/*.d.ts"
   ],
   "keywords": [
@@ -48,6 +47,7 @@
     "version": "npm run build && git add -A",
     "postversion": "git push && git push --tags && npm publish",
     "build": "rollup -c && tsc --declaration true --declarationDir types",
+    "build1": "rollup -c rollup.config.cjs.js && tsc --declaration true --declarationDir types",
     "test": "npm run test:typecheck && npm run test:lint && npm run test:jest",
     "test:lint": "eslint src",
     "test:typecheck": "tsc --noEmit",
